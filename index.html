@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <title>Hangman Aniamls Game</title>
+
+
+</head>
+
+<body>
+    <header>
+        <h1>Hangman Animals</h1>
+        <h2>Guess the animals to win the game!</h2>
+    </header>
+    <div id="theGame">
+        <div id="startGame">
+            <h3>Press Any Letter And Guess The Word</h3>
+        </div>
+        <div id="status">
+            <div id="currentWord">
+                <p>Current Word</p>
+                <p id="theWord"></p>
+            </div>
+            <h3>Number Of Guesses Remaining</h3>
+            <p id="guessesRemain"></p>
+            <h3>Letters Already Guessed</h3>
+            <p id="guessed"></p>
+            <div id="playerStatus">
+                <h3>Your Score:</h3>
+                <p id="score">0</p>
+            </div>
+        </div>
+        <div id="picture">
+            
+        </div>
+        <button id="nextWord" onclick="newWord()">Next Word</button>
+    </div>
+   
+    </div>
+
+
+    <script src="assets/javascript/game.js"></script>
+
+
+
+</body>
+
+
+</html>
