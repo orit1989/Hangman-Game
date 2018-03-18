@@ -1,7 +1,7 @@
 // create an array of words
 var animals = ["cat", "dog", "pig", "horse", "lion", "duck"];
-var animalPictures = ["images/cat.jpg","images/dog.jpg","images/pig.jpg","images/horse.jpg","images/lion.jpg","images/duck.jpg"];
-var animalAudio = ["audio/cat.wav","audio/dog.wav","audio/pig.wav","audio/horse.wav","audio/lion.wav","audio/duck.wav"];
+var animalPictures = ["assets/images/cat.png","assets/images/dog.jpg","assets/images/pig.gif","assets/images/horse.jpg","assets/images/lion.jpeg","assets/images/duck.jpg"];
+var animalAudio = ["assets/audio/cat.wav","assets/audio/dog.wav","assets/audio/pig.wav","assets/audio/horse.wav","assets/audio/lion.wav","assets/audio/duck.wav"];
 
 // create starting variables
 var score = 0;
@@ -22,11 +22,37 @@ function newWord () {
     console.log(chosenWord);
     chosenWordLength = chosenWord.length;
     // print underscores with the length of the chosen word
-    createUnderscores ();
+    createUnderscores (chosenWordLength);
     document.getElementById("theWord").textContent = underScores.join(" ");
     //update guesses to new starting value
     document.getElementById("guessesRemain").textContent = guesses;
+
+    document.getElementById("guessed").textContent = "";
     
+}
+
+function showPicture () {
+
+    chosenWordIndex = animals.indexOf(chosenWord);
+    pictureURL = animalPictures[chosenWordIndex];            
+    //change the html to show the image
+    var img = new Image();
+    var div = document.getElementById('picture');
+    
+    img.onload = function() {
+        div.appendChild(img);
+    };
+    
+    img.src = pictureURL;
+}
+
+function playSound () {
+
+    chosenWordIndex = animals.indexOf(chosenWord);
+    audioURL = animalAudio[chosenWordIndex];            
+    var audio = new Audio(audioURL);
+    audio.play();
+
 }
 
 // listen for key strokes and check if wrong or right
@@ -53,56 +79,44 @@ document.onkeyup = function(event) {
             score++;
             //update the HTML with the score
             document.getElementById("score").textContent = score;
-            //find the right image
-            chosenWordIndex = animals.indexOf(chosenWord);
-            pictureURL = animalPictures(chosenWordIndex);
-            //change the html to show the image
-            document.getElementById("picture").innerHTML="";
-            //find the right sound file
-        // audioURL = animalAudio(chosenWordIndex);
-            //change the html to load the right sound
-        // player.src = audioURL;
-            //player.play;
-
+            //show picture
+            showPicture();
+            //play sound
+            playSound ();
         }
             
     }
    // if they key is wrong, add the letter to the wrong guesses and reduce the number of guesses remaining
     else {
-        //reduce guesses by 1
-        guesses--;
-        //update the HTML with the guesses
-        document.getElementById("guessesRemain").textContent = guesses;
-        wrongLetters.push(userKey);
-        document.getElementById("guessed").textContent = wrongLetters.join(",");
-    // if they already typed a key that they've typed before, it shouldn't reduce their guesses
-    
-
-    // if they have no more guesses, the word and the image should appear and an alert that says 'try again', after they dismiss it it resets for a new word
-    if (guesses === 0){
-        alert("Try Again!")
-        newWord ()
-        
+        // if they already typed a key that they've typed before, it shouldn't reduce their guesses
+       if (wrongLetters.indexOf(userKey) === -1) {
+            //reduce guesses by 1
+            guesses--;
+            //update the HTML with the guesses
+            document.getElementById("guessesRemain").textContent = guesses;
+            wrongLetters.push(userKey);
+            document.getElementById("guessed").textContent = wrongLetters.join(",");
+        };
+       
+    // if they have no more guesses, it will show an alert with the correct word and a message to try again. After they dismiss it, it resets for a new word
+        if (guesses === 0){
+            alert("The word was: " + chosenWord + ". Try Again!");
+            newWord ();
+        };
     }
-    }
+};
 
 
-
-
-}
-
-    
-
-// if the users clicks the Next Word it resets the fields and chooses a new word
-
-
-function createUnderscores () {
-    for (var i=0; i < chosenWordLength; i++) {
+function createUnderscores (length) {
+//create the underscores based on the length of the chosen word
+    for (var i=0; i < length; i++) {
         underScores.push("_");
     }
 }
 
 function resetGameStats() {
+// if the users clicks the Next Word it resets the fields and chooses a new word
+
     document.getElementById("picture").innerHTML = "";
     guesses=10;
     underScores=[];
