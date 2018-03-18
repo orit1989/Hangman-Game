@@ -100,7 +100,7 @@ document.onkeyup = function (event) {
         }
         // if finished all words in the array, game over and the game will restart. 
         if (wordsAleadyPicked.length === animals.length) {
-            document.getElementById("restartGame").textContent = "Restart Game";
+            document.getElementById("restartGame").textContent = "Click Here To Restart The Game";
             document.getElementById("nextWord").style.visibility = "hidden";
         }
 
@@ -123,7 +123,7 @@ document.onkeyup = function (event) {
             wordsAleadyPicked.push(chosenWord);
 
             if (wordsAleadyPicked.length === animals.length) {
-                document.getElementById("restartGame").textContent = "Restart Game";
+                document.getElementById("restartGame").textContent = "Click Here To Restart The Game";
                 document.getElementById("nextWord").style.visibility = "hidden";
                 alert("The word was: " + chosenWord + ". Try Again!");
 
