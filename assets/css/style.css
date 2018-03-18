@@ -62,9 +62,6 @@ img {
 }
 
 #restartGame {
-    z-index: 99;
-    margin-left: 200px;
-    margin-right: 200px;
-    padding: 100px;
-    margin-top: 70px;
+    padding-top: 350px;
+    font-size: 50px;
 }
