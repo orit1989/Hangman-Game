@@ -76,7 +76,14 @@ document.onkeyup = function(event) {
         wrongLetters.push(userKey);
         document.getElementById("guessed").textContent = wrongLetters.join(",");
     // if they already typed a key that they've typed before, it shouldn't reduce their guesses
+    
+
     // if they have no more guesses, the word and the image should appear and an alert that says 'try again', after they dismiss it it resets for a new word
+    if (guesses === 0){
+        alert("Try Again!")
+        newWord ()
+        
+    }
     }
 
 
