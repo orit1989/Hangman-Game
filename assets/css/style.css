@@ -57,6 +57,14 @@ font-size:30px;
 
 .button1 {border-radius: 50%;}
 
-img {margin-top:60px};
+img {
+    margin-top:60px;
+}
 
-#guessesRemain {font-size:30px;};
+#restartGame {
+    z-index: 99;
+    margin-left: 200px;
+    margin-right: 200px;
+    padding: 100px;
+    margin-top: 70px;
+}
