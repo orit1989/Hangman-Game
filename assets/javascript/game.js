@@ -73,7 +73,7 @@ document.onkeyup = function (event) {
 
     // if the key is right, update the underscores
     if (chosenWord.indexOf(userKey) > -1) {
-        // if the key is found in the word, loop to find all the places in the array that needs replacing from _ to the user key
+        // if the key is found in the word, loop to find all the places in the array that needs replacing from "_" to the user key
         for (var i = 0; i < chosenWord.length; i++) {
             if (chosenWord[i] === userKey) {
                 underScores[i] = userKey;
